@@ -1,0 +1,435 @@
+/* --- Global Fix: Prevents elements with padding/borders from breaking width limits --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body 
+{
+    margin: 0; /* Prevents tiny white gaps at the edge of the screen */
+    background: #fcfcfc;
+    background: linear-gradient(315deg, rgba(252, 252, 252, 1) 0%, rgba(255, 166, 0, 1) 95%);
+}
+
+hr
+{
+    width:50%;
+    background-color:solid black;
+}
+
+/* --- Menu & Navigation Layout --- */
+.menu 
+{
+    margin: 20px 0 0 0;
+    padding: 0; /* Changed from 5px to 0 so the hover color flushes to the edges */
+    background-color: rgb(136, 19, 246);
+    top:0;
+    z-index:1000;
+}
+
+nav ul
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li 
+{
+    flex: 1;            /* This makes every menu item take up equal width */
+    text-align: center; /* Centers the text inside its allocated section */
+}
+
+/* --- Link Styling & The "Fill Color" Fix --- */
+nav ul li a 
+{
+    display: block;      /* CRITICAL: Makes the link behave like a full block */
+    padding: 15px 0;     /* Adds vertical height to the navigation bar */
+    color: white;
+    text-decoration: none; /* Removes the default underline */
+    font-family: 'Lucida Sans', sans-serif;
+    font-size: larger;
+    position:relative;
+}
+
+/* --- States (Hover, Visited, Active) --- */
+nav ul li a:visited 
+{
+    color: white;
+}
+
+nav ul li a:hover 
+{
+    color: white;
+    background-color: blue; /* This will now fill the entire block area! */
+}
+
+.name
+{
+    text-align: center;
+    text-decoration: double;
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+    font-size:xx-large;
+    margin-top:50px;
+    margin-bottom:0;
+    text-shadow:14px 4px 4px #888888;
+    font-weight: bolder;
+    animation: glow 2s infinite alternate;
+}
+
+.typing-container {
+    margin:10px;
+    padding:10px;
+    display: inline-block;
+}
+
+.typing-text {
+  /* Crucial setup */
+  font-size:x-large;
+  font-weight:bold;
+  font-family: 'Courier New', Courier, monospace; /* Monospace is key */
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden; /* Hides the text until width expands */
+  
+  /* The Cursor */
+  border-right: 3px solid #333; /* Adjust color and thickness here */
+  
+  /* The Animations */
+  /* 'steps' should ideally match the number of characters in your text */
+  animation: 
+    typing 3.5s steps(30, end) infinite alternate,
+    blink-cursor 0.75s step-end infinite;
+}
+
+/* Typing Animation: Animates width from 0 to 100% */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* Cursor Animation: Toggles the border color from visible to transparent */
+@keyframes blink-cursor {
+  from, to { border-color: transparent }
+  50% { border-color: #333; }
+}
+
+/* --- FIXED LAYOUT ENGINE FOR ADMISSION STEPS --- */
+.step1
+{
+    margin: 40px auto;
+    max-width: 900px;     /* Prevents cards from getting comically stretched on desktop screens */
+    width: 100%;
+    display: flex;
+    align-items: center;  /* Aligns circle and pink block evenly along the cross axis */
+    padding: 0 20px;
+}
+
+.s1
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    font-size: x-large;
+    font-weight: bolder;
+    background-color: white;
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    min-width: 80px;      /* CRITICAL: Stops flexbox from warping or squishing your circles on mobile */
+    margin-right: 20px;   /* Consistent layout separation */
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    animation: float 3s ease-in-out infinite;
+}
+
+.s1-step {
+    font-family: sans-serif;
+    font-weight: bolder;
+    background-color: rgb(255,105,180);
+    border-radius: 50px;
+    width: 100%;
+    min-height: 130px;
+    box-shadow: 0 14px 8px rgba(0,0,0,0.1), 0 6px 20px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+    
+    /* Flexbox setup to stack elements vertically and center */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers block text vertically inside the pill */
+    align-items: center;     /* Centers block text horizontally */
+    padding: 15px 25px;
+}
+
+.s1-step::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.4),
+        transparent
+    );
+}
+
+.s1-step:hover::before{
+    left:100%;
+    transition:1s;
+}
+
+.s1-step:hover
+{
+    transform: scale(1.05);
+}
+
+/* Style the Title */
+.s1-step h2 {
+    margin: 5px 0;
+    padding: 0;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+/* Style the Paragraph Description */
+.s1-step p {
+    margin: 5px 0 0 0;
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+}
+
+.contact-info
+{
+    margin: 25px 100px 100px 70px;
+    font-family:'Times New Roman';
+    font-size:large;
+}
+
+/* --- CONSOLIDATED & CLEANED MOBILE MEDIA QUERY --- */
+@media screen and (max-width: 768px){
+
+    /* Navigation items flip cleanly to a vertical layout block */
+    nav ul{
+        flex-direction: column;
+    }
+
+    nav ul li{
+        width:100%;
+    }
+
+    /* Steps rearrange to stack step circles neatly on top of the descriptions */
+    .step1{
+        flex-direction: column;
+        align-items: center;
+        margin: 30px auto;
+    }
+
+    .s1{
+        margin-right: 0;
+        margin-bottom: 15px; /* Creates spacing between circle and card below it */
+    }
+
+    .s1-step{
+        width: 100%;
+        max-width: 100%;
+        padding: 20px;
+        border-radius: 25px; /* Slightly tighter border-radius fits screens better */
+    }
+
+    .s1-step:hover{
+        transform: none; /* Prevents sticky hover animations on mobile touchscreen taps */
+    }
+
+    .contact-info {
+        margin: 25px 20px 60px 20px; /* Brings excessive desktop padding within viewport boundaries */
+    }
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px #fff;
+    }
+    to{
+        text-shadow:
+        0 0 15px white,
+        0 0 25px #6a5acd,
+        0 0 40px #6a5acd;
+    }
+}
+
+/*Styling for teacher.html*/
+.quote
+{
+    margin-left:100px;
+    margin-top:60px;
+    margin-bottom:60px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    position:relative;
+    text-shadow: auto;
+    height:auto;
+    width:800px;
+    display:flex;
+    float:left;
+    padding:30px auto;
+    max-width: 100%;
+    overflow:visible;
+}
+
+.quote:hover
+{
+    transform:scale(1.1);
+}
+
+.image
+{
+    margin-left:80px;
+    margin-right:auto;
+    float:right;
+}
+
+.junior
+{
+    clear:both;
+    margin-left: 40px;
+    margin-top:280px;
+    font-weight: bolder;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ==================================
+   1. FILTER NAVIGATION (Flexbox)
+   ================================== */
+.filter-nav {
+  display: flex;
+  flex-wrap: wrap;       /* Allows buttons to drop to the next line on mobile */
+  justify-content: center; /* Centers the buttons horizontally */
+  gap: 12px;             /* Spaces the buttons evenly */
+  margin-bottom: 40px;
+}
+
+.filter-btn {
+  padding: 10px 24px;
+  border: 1px solid #e0e0e0;
+  border-radius: 50px;    /* Gives the perfect "pill" shape */
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* Styled state for the active/selected button */
+.filter-btn.active {
+  background-color: #e62329; /* Matches the red in your image */
+  color: #fff;
+  border-color: #e62329;
+}
+
+/* ==================================
+   2. FACULTY CARDS CONTAINER (Flexbox)
+   ================================== */
+.faculty-grid {
+  display: flex;
+  flex-wrap: wrap;       /* Drops cards to the next row when space runs out */
+  justify-content: center; /* Centers the row of cards */
+  gap: 20px;             /* Space between the cards */
+}
+/* The individual card updated for vertical stacking */
+.faculty-card {
+  position: relative;
+  flex: 0 1 280px;         /* Increased slightly to fit text cleanly */
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 30px 24px;      /* Increased padding for breathable spacing */
+  
+  /* CHANGES HERE: Stack elements vertically */
+  display: flex;
+  flex-direction: column;  /* Places text directly underneath the avatar */
+  align-items: center;     /* Keeps the circular avatar centered at the top */
+  
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.faculty-card:hover
+{
+    transform: scale(1.02);
+}
+
+/* New Content Block Styles */
+.faculty-info {
+  width: 100%;             /* Ensures text section takes full width of the card */
+  margin-top: 20px;        /* Spacing between the avatar and the name */
+  text-align: left;        /* Aligns text to the left side */
+}
+
+.faculty-info h3 {
+  margin: 0 0 6px 0;
+  color: #0c1a30;          /* Deep navy/black color */
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.subject-badge {
+  position: relative;
+  top: 15px;
+  right: 15px;
+  left:40px;
+  bottom:20px;
+  background-color: #fff;
+  color: #e62329;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.faculty-info .role-text {
+  margin: 0 0 16px 0;
+  color: #e62329;          /* Red text color */
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.faculty-info .bio-text {
+  margin: 0 0 20px 0;
+  color: #4a5568;          /* Soft grey color for the description */
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* The light divider line */
+.card-divider {
+  border: 0;
+  border-top: 1px solid #f0f0f0;
+  margin-bottom: 16px;
+}
