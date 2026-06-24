@@ -1,28 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
-body 
-{
-    background: #fcfcfc;
-    background: linear-gradient(315deg, rgba(252, 252, 252, 1) 0%, rgba(255, 166, 0, 1) 95%);
-    margin: 0; /* Prevents tiny white gaps at the edge of the screen */
+body {
+    margin: 0;
+    background: #f4f6f9;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
 }
 
-hr
-{
-    width:50%;
-    background-color:solid black;
+hr {
+    width: 50%;
+    background-color: solid black;
 
 }
 
 /* --- Menu & Navigation Layout --- */
-.menu 
-{
-    margin: 20px 0 0 0;
-    padding: 0; /* Changed from 5px to 0 so the hover color flushes to the edges */
-    background-color: rgb(136, 19, 246);
+.menu {
+    background: #0F4C81;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    margin: 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, .15);
 }
 
-nav ul
-{
+nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -30,220 +31,235 @@ nav ul
     justify-content: space-around;
 }
 
-nav ul li 
-{
-    flex: 1;            /* This makes every menu item take up equal width */
-    text-align: center; /* Centers the text inside its allocated section */
+nav ul li {
+    flex: 1;
+    /* This makes every menu item take up equal width */
+    text-align: center;
+    /* Centers the text inside its allocated section */
 }
 
 /* --- Link Styling & The "Fill Color" Fix --- */
-nav ul li a 
-{
-    display: block;      /* CRITICAL: Makes the link behave like a full block */
-    padding: 15px 0;     /* Adds vertical height to the navigation bar */
+nav ul li a {
+    display: block;
+    padding: 18px 0;
     color: white;
-    text-decoration: none; /* Removes the default underline */
-    font-family: 'Lucida Sans', sans-serif;
-    font-size: larger;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s ease;
 }
 
 /* --- States (Hover, Visited, Active) --- */
-nav ul li a:visited 
-{
+nav ul li a:visited {
     color: white;
 }
 
-nav ul li a:hover 
-{
+nav ul li a:hover {
     color: white;
-    background-color: blue; /* This will now fill the entire block area! */
+    background: #0b3c65;
+    /* This will now fill the entire block area! */
 }
 
-.name
-{
+.name {
+    color: #0F4C81;
+    font-size: 3rem;
+    font-weight: 800;
     text-align: center;
-    text-decoration: double;
-    color: black;
-    font-family: 'Times New Roman', Times, serif;
-    font-size:xx-large;
-    margin-top:50px;
-    margin-bottom:0;
-    text-shadow:14px 4px 4px #888888;
-    font-weight: bolder;
+    margin-top: 30px;
+    text-shadow: none;
+    letter-spacing: 1px;
 }
 
 .typing-container {
-    margin:10px;
-    padding:10px;
-  display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    display: inline-block;
 }
 
 .typing-text {
-  /* Crucial setup */
-  font-size:x-large;
-  font-family: 'Times New Roman', Times, serif;
-  font-weight:bold;
-  font-family: 'Courier New', Courier, monospace; /* Monospace is key */
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden; /* Hides the text until width expands */
-  
-  /* The Cursor */
-  border-right: 3px solid #333; /* Adjust color and thickness here */
-  
-  /* The Animations */
-  /* 'steps' should ideally match the number of characters in your text */
-  animation: 
-    typing 3.5s steps(30, end) infinite alternate,
-    blink-cursor 0.75s step-end infinite;
+    /* Crucial setup */
+    font-size: x-large;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    /* Monospace is key */
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    /* Hides the text until width expands */
+
+    /* The Cursor */
+    border-right: 3px solid #333;
+    /* Adjust color and thickness here */
+
+    /* The Animations */
+    /* 'steps' should ideally match the number of characters in your text */
+    animation:
+        typing 3.5s steps(30, end) infinite alternate,
+        blink-cursor 0.75s step-end infinite;
 }
 
 /* Typing Animation: Animates width from 0 to 100% */
 @keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
 }
 
 /* Cursor Animation: Toggles the border color from visible to transparent */
 @keyframes blink-cursor {
-  from, to { border-color: transparent }
-  50% { border-color: #333; }
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: #333;
+    }
 }
 
-.extension 
-{
-    max-width: 850px;              /* Scatters the text horizontally across either side safely */
-    margin: 0 auto;                /* Centers the scattered block layout */
-    padding: 0 40px;               /* Side gutters so text doesn't touch screen edges */
-    color: black;                /* Sharp contrast text color */
-    font-size: 1.15rem;
-    line-height: 1.6;
-    text-align: justify;           /* Spreads text blocks clean and flush on both margins */
-    font-family:'Times New Roman', Times, serif;
-    font-size:x-large;
-    text-shadow: 0px 4px 4px #ccc, 0px 4px 4px #ccc;
+.extension {
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 30px;
+    font-size: 18px;
+    line-height: 1.9;
+    color: #444;
+    text-align: justify;
 }
 
-.building 
-{
-    display:block;
-    border:2px solid #ccc;
-    margin: 50px auto;
-    box-shadow: 0 14px 8px rgba(0,0,0,0.1), 0 6px 20px rgba(0,0,0,0.1);;
-    width:720px;
-    height: 800px;        /* Set a reasonable height instead of 1200px */
-    background:url(images/back.jpeg);
-    background-size:cover;
-    animation:build 60s infinite;
-    margin-bottom:100px;
+.building {
+    margin: auto;
+    width: 90%;
+    max-width: 1100px;
+    height: 1100px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .15);
+    animation: build 30s infinite;
 }
 
-@keyframes build
-{
-    0%{backgroud: url(images/back.jpeg); background-size: cover;}
-    25%{background: url(images/interior.jpg); background-size: cover;}
-    50%{background: url(images/office.jpg); background-size: cover;}
-    100%{background: url(images/playground.jpg); background-size: cover;}
+@keyframes build {
+    0% {
+        backgroud: url(images/back.jpeg);
+        background-size: cover;
+    }
+
+    25% {
+        background: url(images/interior.jpg);
+        background-size: cover;
+    }
+
+    50% {
+        background: url(images/office.jpg);
+        background-size: cover;
+    }
+
+    100% {
+        background: url(images/playground.jpg);
+        background-size: cover;
+    }
 }
 
 /* --- Master Multi-Column Wrapper --- */
-.main-content-layout 
-{
-    max-width: 1200px;       /* Sets the constraint matching your page limits */
-    margin: 50px auto;       /* Centers the layout module on your screen */
-    padding: 0 40px;         /* Protects layout from sticking to viewport edge */
-    display: flex;           /* Activates flexbox grid */
-    gap: 40px;               /* Space gap directly splitting the two modules */
-    align-items: stretch;    /* Magical property forcing both boxes to match heights perfectly */
+.main-content-layout {
+    max-width: 1200px;
+    /* Sets the constraint matching your page limits */
+    margin: 50px auto;
+    /* Centers the layout module on your screen */
+    padding: 0 40px;
+    /* Protects layout from sticking to viewport edge */
+    display: flex;
+    /* Activates flexbox grid */
+    gap: 40px;
+    /* Space gap directly splitting the two modules */
+    align-items: stretch;
+    /* Magical property forcing both boxes to match heights perfectly */
 }
 
 /* --- Common Base Structural Column --- */
-.column-container 
-{
-    flex: 1;                 /* Allocates perfect 50/50 width distribution */
+.column-container {
+    flex: 1;
+    /* Allocates perfect 50/50 width distribution */
     display: flex;
-    flex-direction: column;  /* Heavy stack layout logic: Title top, content bottom */
-    margin-top:100px;
+    flex-direction: column;
+    /* Heavy stack layout logic: Title top, content bottom */
+    margin-top: 100px;
 }
 
 /* --- Heading Elements Sync --- */
-.notice-title, .desk 
-{
-    color: #e06d53;             
+.notice-title,
+.desk {
+    color: #e06d53;
     font-size: 2.2rem;
     font-weight: 900;
-    margin-top:50px;
+    margin-top: 50px;
     font-family: 'Lucida Sans', sans-serif;
-    margin-bottom: 20px;     /* Sets identical breathing room beneath headers */
+    margin-bottom: 20px;
+    /* Sets identical breathing room beneath headers */
     display: flex;
     align-items: center;
-    height: 50px;            /* Forces title lines onto identical operational height planes */
+    height: 50px;
+    /* Forces title lines onto identical operational height planes */
 }
 
-.column-container:hover, .extension:hover, .content:hover
-{
+.column-container:hover,
+.extension:hover,
+.content:hover {
     transform: scale(1.1);
 }
 
 /* --- Updated Content Block: Notice --- */
-.notice-content 
-{
-    background-color: #fac4f2;  
-    border: 1px solid #dcdcdc;  
-    border-radius: 45px;
-    padding: 20px;           
-    box-shadow: 0 14px 8px rgba(0,0,0,0.1), 0 6px 20px rgba(0,0,0,0.1);
-    font-family: 'Bookman Old Style', sans-serif;
-    font-weight: 400;
-    font-size: large;
-    flex-grow: 1;            /* Stretches the background color to match the director box height */
+.notice-content {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .1);
+    transition: .4s;
 }
 
 /* --- Updated Content Block: Director Desk --- */
-.director-desk-content 
-{
-    font-weight: 400;
-    background-color: rgb(252, 182, 194);  
-    border: 1px solid #dcdcdc;  
-    border-radius: 45px;
-    padding: 20px;           
-    box-shadow: 0 14px 8px rgba(0,0,0,0.1), 0 6px 20px rgba(0,0,0,0.1); 
-    font-family: 'Bookman Old Style', sans-serif;
-    font-size: large;
-    display: flex;
-    align-items: center; 
-    justify-content: space-between;
-    gap: 20px;
-    flex-grow: 1;            /* Stretches the background color to match the notice box height */
+.director-desk-content {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .1);
+    transition: .4s;
+}
+
+.director-desk-content:hover {
+    transform: translateY(-8px);
 }
 
 /* --- Inner Director Box Layout details --- */
-.director-text 
-{
+.director-text {
     flex: 1;
     line-height: 1.6;
 }
 
-.director-profile 
-{
+.director-profile {
     display: flex;
-    flex-direction: column; 
-    align-items: center;    
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    flex-shrink: 0;         
+    flex-shrink: 0;
 }
 
-.sir-image 
-{
-    width: 150px;            
+.sir-image {
+    float: right;
+    width: 150px;
     height: 150px;
-    border-radius: 50%; 
+    border-radius: 50%;
     object-fit: cover;
     border: 3px solid white;
 }
 
-.director-name 
-{
+.director-name {
     margin-top: 10px;
     margin-bottom: 0;
     font-weight: bold;
@@ -252,224 +268,217 @@ nav ul li a:hover
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.distinction
-{
-    flex:1;
-    display:flex;
-    margin-top:50px;
-    padding:5px;
-    background-color:rgb(220, 220, 47);
-    height:250px;
+.distinction {
+    display: flex;
     justify-content: center;
-    align-items:center;
-    align-content: center;
-    font-family:Arial, Helvetica, sans-serif;
-    font-size:x-large;
-    gap:80px;
+    align-items: center;
+    gap: 80px;
+    background: #0F4C81;
+    color: white;
+    min-height: 250px;
 }
 
-.box1, .box2, .box3, .box4 {
-  display: flex;
-  flex-direction: column;  /* Stack h2 above p */
-  align-items: center;     /* Center text horizontally */
-  text-align: center;      /* Keeps wrapped text centered */
-  font-size:x-large;
+.box1,
+.box2,
+.box3,
+.box4 {
+    display: flex;
+    flex-direction: column;
+    /* Stack h2 above p */
+    align-items: center;
+    /* Center text horizontally */
+    text-align: center;
+    /* Keeps wrapped text centered */
+    font-size: x-large;
 }
 
-.thought
-{
-    border:2px solid black;
-    box-shadow: 0 14px 8px rgba(0,0,0,0.1), 0 6px 20px rgba(0,0,0,0.1);;
+.thought {
+    border: 2px solid black;
+    box-shadow: 0 14px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+    ;
     margin: 120px 50px 120px 50px;
-    padding:10px;
+    padding: 10px;
     height: 142px;
     border-radius: 1%;
     text-align: center;
     text-decoration: dashed;
     font-size: x-large;
     text-rendering: auto;
-    color:#e06d53;
-    font-weight:bold;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+    color: #e06d53;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .why {
-  margin-top: 50px;
-  padding: 40px 20px;          /* Increased padding for a clean look */
-  background-color: black;
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
-  
-  display: flex;
-  flex-direction: column;      /* Stacks heading on top of the row wrapper */
-  align-items: center;         /* Centers the heading and row horizontally */
-  gap: 40px;                   /* Adds clean space between heading and images */
-  
-  min-height: 400px;           /* Changed to min-height so it doesn't break layout */
+    margin-top: 50px;
+    padding: 40px 20px;
+    background-color: black;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+
+    min-height: 400px;
 }
 
 .why h1 {
-  margin: 0;                   /* Removes default browser margins */
-  font-size: 2.5rem;
+    margin: 0;
+    /* Removes default browser margins */
+    font-size: 2.5rem;
 }
 
 /* This new rule targets the wrapper and lines the boxes up horizontally */
 .boxes-row {
-  display: flex;
-  flex-direction: row;         /* Places all boxes in the same line */
-  justify-content: center;     /* Centers the group of boxes */
-  align-items: flex-start;     /* Aligns the top of the images evenly */
-  gap: 30px;                   /* Adds space between each individual box */
-  width: 100%;                 /* Spans across the screen width */
+    display: flex;
+    flex-direction: row;
+    /* Places all boxes in the same line */
+    justify-content: center;
+    /* Centers the group of boxes */
+    align-items: flex-start;
+    /* Aligns the top of the images evenly */
+    gap: 30px;
+    /* Adds space between each individual box */
+    width: 100%;
+    /* Spans across the screen width */
 }
 
-.boxes-row img
-{
+.boxes-row img {
     object-fit: cover;
 }
 
-.photo-gallery
-{
-    color: #e06d53;             
+.photo-gallery {
+    color: #e06d53;
     font-size: 2.2rem;
     font-weight: 900;
     font-family: 'Lucida Sans', sans-serif;
-    text-align:center;
-    margin-top:40px;
+    text-align: center;
+    margin-top: 40px;
 }
 
-.fests
-{
+.fests {
     margin-left: 120px;
     margin-right: 120px;
-    padding:0 20;
+    padding: 0 20;
     border: 2px black;
     border-width: 2px;
     border-radius: 20%;
 }
 
-.contact-info
-{
+.contact-info {
     margin: 25px 100px 500px 70px;
-    font-family:'Bookman Old Style';
+    font-family: 'Bookman Old Style';
     text-spacing-trim: normal;
-    font-size:large;
-    text-spacing:5px;
+    font-size: large;
+    text-spacing: 5px;
     font-weight: 300px;
 }
 
 /*About Page Styling*/
-.school
-{
-    background-color:yellow;
+.school {
+    background-color: yellow;
     margin-top: 50px;
     margin-left: 120px;
     margin-right: 120px;
-    border:2px solid black;
+    border: 2px solid black;
     border-width: 5px;
     border-bottom-left-radius: 30px;
     border-top-right-radius: 30px;
     height: 50px;
-    width:auto;
-    align-content:center;
+    width: auto;
+    align-content: center;
     align-items: center;
-    font-size:xx-large;
+    font-size: xx-large;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bolder;
     text-align: center;
-    color:rgb(0,1,0);
+    color: rgb(0, 1, 0);
 }
 
-.content
-{
-    padding:20px;
-    color:rgb(0,1,0);
-    border-radius:15px;
+.content {
+    padding: 20px;
+    color: rgb(0, 1, 0);
+    border-radius: 15px;
     margin-top: 50px;
     margin-left: 120px;
     margin-right: 120px;
-    width:auto;
-    font-family:'Times New Roman', Times, serif;
-    background-color:peachpuff;
-    font-size:larger;
-    box-shadow:14px 14px 4px #888888;
+    width: auto;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: peachpuff;
+    font-size: larger;
+    box-shadow: 14px 14px 4px #888888;
 }
 
 
-.card
-{
+.card {
     margin: 100px 50px 50px 100px;
     padding: 2em;
     font-family: 'Times New Roman', Times, serif;
-    font-size:large;
-    color:white;
-    float:right;
+    font-size: large;
+    color: white;
+    float: right;
     margin-top: 90px;
     margin-left: 120px;
     margin-right: 120px;
-    width:auto;
-    background:rgb(36, 34, 34);
+    width: auto;
+    background: rgb(36, 34, 34);
     text-align: center;
     position: relative;
     border-radius: 10px;
 }
 
-.card p
-{
+.card p {
     font-family: 'Times New Roman', Times, serif;
-    color:rgb(255, 255, 255);
-    font-size:larger;
-    margin-top:20px;
-    padding-left:20px;
+    color: rgb(255, 255, 255);
+    font-size: larger;
+    margin-top: 20px;
+    padding-left: 20px;
 }
 
-@property --angle
-{
+@property --angle {
     syntax: "<angle>";
     initial-value: 0deg;
     inherits: false;
 }
 
-.card::after, .card::before
-{
-    content:'';
-    position:absolute;
-    height:100%;
-    width:100%;
+.card::after,
+.card::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
     background-image: conic-gradient(from var(--angle), red, green, blue, rgb(239, 50, 82), cyan, aqua, peachpuff);
-    top:50%;
-    left:50%;
-    translate:-50% -50%;
-    z-index:-1;
-    padding:5px;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 5px;
     border-radius: 10px;
-    animation:3s spin linear infinite;
+    animation: 3s spin linear infinite;
 }
 
-@keyframes spin
-{
-    from
-    {
-        --angle:0deg;
+@keyframes spin {
+    from {
+        --angle: 0deg;
     }
-    to
-    {
-        --angle:360deg;
+
+    to {
+        --angle: 360deg;
     }
 }
 
-.card::before
-{
+.card::before {
     filter: blur(1.5rem);
-    opacity:0.5;
+    opacity: 0.5;
 }
 
-.back-to-home
-{
-     padding:20px;
-    color:rgb(0,1,0);
-    width:auto;
-    font-family:'Times New Roman', Times, serif;
-    font-size:larger;
+.back-to-home {
+    padding: 20px;
+    color: rgb(0, 1, 0);
+    width: auto;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: larger;
     text-decoration: none;
 }
