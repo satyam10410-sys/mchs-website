@@ -471,7 +471,7 @@ nav ul li a:hover {
 }
 
 .card::before {
-    filter: blur(1.5rem);
+    filter: blur(2.3rem);
     opacity: 0.5;
 }
 
