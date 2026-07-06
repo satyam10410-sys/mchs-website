@@ -1,483 +1,140 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap)
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
-    margin: 0;
-    background: #f4f6f9;
     font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
     color: #333;
+    background: #f8f9fa;
 }
 
-hr {
-    width: 50%;
-    background-color: solid black;
-
-}
-
-/* --- Menu & Navigation Layout --- */
-.menu {
-    background: #0F4C81;
+.navbar {
+    background: #003087;
+    color: white;
     position: sticky;
     top: 0;
     z-index: 1000;
-    margin: 0;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, .15);
-}
-
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    padding: 1rem 5%;
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-nav ul li {
-    flex: 1;
-    /* This makes every menu item take up equal width */
-    text-align: center;
-    /* Centers the text inside its allocated section */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.4rem;
 }
 
-/* --- Link Styling & The "Fill Color" Fix --- */
-nav ul li a {
-    display: block;
-    padding: 18px 0;
+.logo img {
+    height: 50px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
     color: white;
     text-decoration: none;
-    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #C5A26F;
+}
+
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* Hero */
+.hero {
+    height: 80vh;
+    background: linear-gradient(rgba(0, 48, 135, 0.75), rgba(0, 48, 135, 0.75)), url('images/back.jpeg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.cta-btn {
+    background: #C5A26F;
+    color: #003087;
+    padding: 14px 32px;
+    border-radius: 50px;
+    text-decoration: none;
     font-weight: 600;
-    transition: 0.3s ease;
-}
-
-/* --- States (Hover, Visited, Active) --- */
-nav ul li a:visited {
-    color: white;
-}
-
-nav ul li a:hover {
-    color: white;
-    background: #0b3c65;
-    /* This will now fill the entire block area! */
-}
-
-.name {
-    color: #0F4C81;
-    font-size: 3rem;
-    text-decoration: underline;
-    font-weight: 800;
-    text-align: center;
-    margin-top: 30px;
-    text-shadow: none;
-    letter-spacing: 1px;
-}
-
-.typing-container {
-    margin: 10px;
-    padding: 10px;
     display: inline-block;
-}
-
-.typing-text {
-    /* Crucial setup */
-    font-size: x-large;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
-    font-family: 'Courier New', Courier, monospace;
-    /* Monospace is key */
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
-    /* Hides the text until width expands */
-
-    /* The Cursor */
-    border-right: 3px solid #333;
-    /* Adjust color and thickness here */
-
-    /* The Animations */
-    /* 'steps' should ideally match the number of characters in your text */
-    animation:
-        typing 3.5s steps(30, end) infinite alternate,
-        blink-cursor 0.75s step-end infinite;
-}
-
-/* Typing Animation: Animates width from 0 to 100% */
-@keyframes typing {
-    from {
-        width: 0;
-    }
-
-    to {
-        width: 100%;
-    }
-}
-
-/* Cursor Animation: Toggles the border color from visible to transparent */
-@keyframes blink-cursor {
-
-    from,
-    to {
-        border-color: transparent
-    }
-
-    50% {
-        border-color: #333;
-    }
-}
-
-.extension {
-    max-width: 1000px;
-    margin: auto;
-    padding: 0 30px;
-    font-size: 18px;
-    line-height: 1.9;
-    color: #444;
-    text-align: justify;
-}
-
-.building {
-    margin: auto;
-    width: 90%;
-    max-width: 1100px;
-    height: 1100px;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, .15);
-    animation: build 30s infinite;
-}
-
-@keyframes build {
-    0% {
-        backgroud: url(images/back.jpeg);
-        background-size: cover;
-    }
-
-    25% {
-        background: url(images/interior.jpg);
-        background-size: cover;
-    }
-
-    50% {
-        background: url(images/office.jpg);
-        background-size: cover;
-    }
-
-    100% {
-        background: url(images/playground.jpg);
-        background-size: cover;
-    }
-}
-
-/* --- Master Multi-Column Wrapper --- */
-.main-content-layout {
-    max-width: 1200px;
-    /* Sets the constraint matching your page limits */
-    margin: 50px auto;
-    /* Centers the layout module on your screen */
-    padding: 0 40px;
-    /* Protects layout from sticking to viewport edge */
-    display: flex;
-    /* Activates flexbox grid */
-    gap: 40px;
-    /* Space gap directly splitting the two modules */
-    align-items: stretch;
-    /* Magical property forcing both boxes to match heights perfectly */
-}
-
-/* --- Common Base Structural Column --- */
-.column-container {
-    flex: 1;
-    /* Allocates perfect 50/50 width distribution */
-    display: flex;
-    flex-direction: column;
-    /* Heavy stack layout logic: Title top, content bottom */
-    margin-top: 100px;
-}
-
-/* --- Heading Elements Sync --- */
-.notice-title,
-.desk {
-    color: #e06d53;
-    font-size: 2.2rem;
-    font-weight: 900;
-    margin-top: 50px;
-    font-family: 'Lucida Sans', sans-serif;
-    margin-bottom: 20px;
-    /* Sets identical breathing room beneath headers */
-    display: flex;
-    align-items: center;
-    height: 50px;
-    /* Forces title lines onto identical operational height planes */
-}
-
-.column-container:hover,
-.extension:hover,
-.content:hover {
-    transform: scale(1.1);
-}
-
-/* --- Updated Content Block: Notice --- */
-.notice-content {
-    background: white;
-    border-radius: 20px;
-    padding: 25px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, .1);
-    transition: .4s;
-}
-
-/* --- Updated Content Block: Director Desk --- */
-.director-desk-content {
-    background: white;
-    border-radius: 20px;
-    padding: 25px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, .1);
-    transition: .4s;
-}
-
-.director-desk-content:hover {
-    transform: translateY(-8px);
-}
-
-/* --- Inner Director Box Layout details --- */
-.director-text {
-    flex: 1;
-    line-height: 1.6;
-}
-
-.director-profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    flex-shrink: 0;
-}
-
-.sir-image {
-    float: right;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid white;
-}
-
-.director-name {
-    margin-top: 10px;
-    margin-bottom: 0;
-    font-weight: bold;
-    color: #333;
-    font-size: 1rem;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-.distinction {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 80px;
-    background: #0F4C81;
-    color: white;
-    min-height: 250px;
-}
-
-.box1,
-.box2,
-.box3,
-.box4 {
-    display: flex;
-    flex-direction: column;
-    /* Stack h2 above p */
-    align-items: center;
-    /* Center text horizontally */
-    text-align: center;
-    /* Keeps wrapped text centered */
-    font-size: x-large;
-}
-
-.thought {
-    border: 2px solid black;
-    box-shadow: 0 14px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
-    ;
-    margin: 120px 50px 120px 50px;
-    padding: 10px;
-    height: 142px;
-    border-radius: 1%;
-    text-align: center;
-    text-decoration: dashed;
-    font-size: x-large;
-    text-rendering: auto;
-    color: #e06d53;
-    font-weight: bold;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-.why {
-    margin-top: 50px;
-    padding: 40px 20px;
-    background-color: black;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-
-    min-height: 400px;
-}
-
-.why h1 {
-    margin: 0;
-    /* Removes default browser margins */
-    font-size: 2.5rem;
-}
-
-/* This new rule targets the wrapper and lines the boxes up horizontally */
-.boxes-row {
-    display: flex;
-    flex-direction: row;
-    /* Places all boxes in the same line */
-    justify-content: center;
-    /* Centers the group of boxes */
-    align-items: flex-start;
-    /* Aligns the top of the images evenly */
-    gap: 30px;
-    /* Adds space between each individual box */
-    width: 100%;
-    /* Spans across the screen width */
-}
-
-.boxes-row img {
-    object-fit: cover;
-}
-
-.photo-gallery {
-    color: #e06d53;
-    font-size: 2.2rem;
-    font-weight: 900;
-    font-family: 'Lucida Sans', sans-serif;
-    text-align: center;
-    margin-top: 40px;
-}
-
-.fests {
-    margin-left: 120px;
-    margin-right: 120px;
-    padding: 0 20;
-    border: 2px black;
-    border-width: 2px;
-    border-radius: 20%;
-}
-
-.contact-info {
-    margin: 25px 100px 500px 70px;
-    font-family: 'Bookman Old Style';
-    text-spacing-trim: normal;
-    font-size: large;
-    text-spacing: 5px;
-    font-weight: 300px;
-}
-
-/*About Page Styling*/
-.school {
-    background-color: yellow;
-    margin-top: 50px;
-    margin-left: 120px;
-    margin-right: 120px;
-    border: 2px solid black;
-    border-width: 5px;
-    border-bottom-left-radius: 30px;
-    border-top-right-radius: 30px;
-    height: 50px;
-    width: auto;
-    align-content: center;
-    align-items: center;
-    font-size: xx-large;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bolder;
-    text-align: center;
-    color: rgb(0, 1, 0);
-}
-
-.content {
-    padding: 20px;
-    color: rgb(0, 1, 0);
-    border-radius: 15px;
-    margin-top: 50px;
-    margin-left: 120px;
-    margin-right: 120px;
-    width: auto;
-    font-family: 'Times New Roman', Times, serif;
-    background-color: peachpuff;
-    font-size: larger;
-    box-shadow: 14px 14px 4px #888888;
-}
-
-
-.card {
-    margin: 100px 50px 50px 100px;
-    padding: 2em;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: large;
-    color: white;
-    float: right;
-    margin-top: 90px;
-    margin-left: 120px;
-    margin-right: 120px;
-    width: auto;
-    background: rgb(36, 34, 34);
-    text-align: center;
-    position: relative;
-    border-radius: 10px;
-}
-
-.card p {
-    font-family: 'Times New Roman', Times, serif;
-    color: rgb(255, 255, 255);
-    font-size: larger;
     margin-top: 20px;
-    padding-left: 20px;
+    transition: all 0.3s;
 }
 
-@property --angle {
-    syntax: "<angle>";
-    initial-value: 0deg;
-    inherits: false;
+.cta-btn:hover {
+    transform: translateY(-5px);
+    background: #d4af37;
 }
 
-.card::after,
-.card::before {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background-image: conic-gradient(from var(--angle), red, green, blue, rgb(239, 50, 82), cyan, aqua, peachpuff);
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
-    z-index: -1;
-    padding: 5px;
-    border-radius: 10px;
-    animation: 3s spin linear infinite;
+/* Other sections - cards, stats, etc. */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-@keyframes spin {
-    from {
-        --angle: 0deg;
-    }
-
-    to {
-        --angle: 360deg;
-    }
+.stats-grid, .facilities-grid, .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
 }
 
-.card::before {
-    filter: blur(2.3rem);
-    opacity: 0.5;
+.stat-item {
+    text-align: center;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 
-.back-to-home {
-    padding: 20px;
-    color: rgb(0, 1, 0);
+.facility-card, .gallery-grid img {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.facility-card:hover, .gallery-grid img:hover {
+    transform: scale(1.05);
+}
+
+footer {
+    background: #003087;
+    color: white;
+    text-align: center;
+    padding: 3rem 0;
+    margin-top: 4rem;
+}gb(0, 1, 0);
     width: auto;
     font-family: 'Times New Roman', Times, serif;
     font-size: larger;
