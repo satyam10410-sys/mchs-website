@@ -63,7 +63,6 @@ nav ul li a:hover {
 .name {
     color: #0F4C81;
     font-size: 3rem;
-    text-decoration: underline;
     font-weight: 800;
     text-align: center;
     margin-top: 30px;
@@ -471,7 +470,7 @@ nav ul li a:hover {
 }
 
 .card::before {
-    filter: blur(2.3rem);
+    filter: blur(1.5rem);
     opacity: 0.5;
 }
 
